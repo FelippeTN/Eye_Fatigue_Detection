@@ -9,7 +9,7 @@ import time
 import dlib
 import cv2
 import matplotlib.pyplot as plt
-
+import datetime
 
 # definir constantes
 ALARM = "alarm.wav"
@@ -56,13 +56,6 @@ print("[INFO] inicializando streaming de vídeo...")
 vs = VideoStream(src=WEBCAM).start()
 time.sleep(1.0)
 
-# desenhar um objeto do tipo figure
-y = [None] * 100
-x = np.arange(0,100)
-fig = plt.figure()
-ax = fig.add_subplot(111)
-li, = ax.plot(x, y)
-
 # loop sobre os frames do vídeo
 while True:
     frame = vs.read()
@@ -92,21 +85,6 @@ while True:
         cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
         cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)
 
-        # salvar historico para plot
-        y.pop(0)
-        y.append(ear)
-
-        # update canvas
-        plt.xlim([0, 100])
-        plt.ylim([0, 0.4])
-        ax.relim()
-        ax.autoscale_view(True, True, True)
-        fig.canvas.draw()
-        plt.show(block=False)
-        li.set_ydata(y)
-        fig.canvas.draw()
-        time.sleep(0.01)
-
         # checar ratio x threshold
         if ear < EYE_AR_THRESH:
             COUNTER += 1
@@ -120,7 +98,7 @@ while True:
                     t.deamon = True
                     t.start()
 
-                cv2.putText(frame, "[ALERTA] FADIGA!", (10, 30),
+                cv2.putText(frame, f"[ALERTA] FADIGA!", (10, 30),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
         # caso acima do threshold, resetar o contador e desligar o alarme
