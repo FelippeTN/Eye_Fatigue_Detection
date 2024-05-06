@@ -12,14 +12,14 @@ import matplotlib.pyplot as plt
 import datetime
 
 # definir constantes
-ALARM = "alarm.wav"
+ALARM = "C:/Users/mmnal/Documents/Trabalho_Python/eye_fatigue_detection/eye_detector/main/alarm.wav"
 WEBCAM = 0
 EYE_AR_THRESH = 0.3
 EYE_AR_CONSEC_FRAMES = 40
 COUNTER = 0
 ALARM_ON = False
 
-
+print("Codigo iniciando...")
 def sound_alarm(path=ALARM):
     # play an alarm sound
     playsound.playsound(ALARM)
@@ -45,7 +45,7 @@ def eye_aspect_ratio(eye):
 # dlib's face detector (HOG-based)
 print("[INFO] carregando o preditor de landmark...")
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor("C:/Users/mmnal/Documents/Trabalho_Python/eye_fatigue_detection/eye_detector/main/shape_predictor_68_face_landmarks.dat")
 
 # pegar os índices do previsor, para olhos esquerdo e direito
 (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
