@@ -11,6 +11,7 @@ import cv2
 import matplotlib.pyplot as plt
 import datetime
 
+
 # definir constantes
 ALARM = "C:/Users/mmnal/Documents/Trabalho_Python/eye_fatigue_detection/eye_detector/main/alarm.wav"
 WEBCAM = 0
