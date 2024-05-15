@@ -15,7 +15,7 @@ import datetime
 ALARM = "C:/Users/mmnal/Documents/Trabalho_Python/eye_fatigue_detection/eye_detector/main/alarm.wav"
 WEBCAM = 0
 EYE_AR_THRESH = 0.3
-EYE_AR_CONSEC_FRAMES = 40
+EYE_AR_CONSEC_FRAMES = 50
 COUNTER = 0
 ALARM_ON = False
 
